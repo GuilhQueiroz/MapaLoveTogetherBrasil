@@ -1,0 +1,89 @@
+/* Centraliza o container e define altura e largura totais */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; /* Ocupa toda a largura da janela */
+  height: 100vh; /* Ocupa toda a altura da janela */
+  padding: 0;
+  margin: 0;
+  padding-top: 80px; /* Adiciona espaço no topo para compensar a navbar */
+  box-sizing: border-box;
+}
+
+/* Ajusta o tamanho do SVG (mapa) para ser responsivo */
+svg {
+  width: 85vw; /* O mapa ocupará 85% da largura da tela */
+  height: auto; /* Ajusta a altura proporcionalmente */
+  max-width: 100%; /* Limita o mapa a no máximo 100% da tela */
+  max-height: 90vh; /* Limita a altura para 90% da tela */
+}
+
+/* Cores por região */
+.norte, .nordeste, .centro-oeste, .sudeste, .sul, .df {
+  fill: rgb(153, 153, 153);
+}
+
+path {
+  fill: #1da1f2;
+  stroke: white;
+  stroke-width: 1px;
+}
+
+path:hover {
+  fill: #ed0022;
+  stroke: red;
+  stroke-width: 3px;
+  transition: fill 0.4s;
+}
+
+.tooltip {
+  pointer-events: none;
+  position: absolute;
+  font-size: 18px;
+  text-align: center;
+  background: white;
+  padding: 10px 15px;
+  z-index: 5;
+  height: 30px;
+  line-height: 30px;
+  color: #000000;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  display: none;
+}
+
+.tooltip.active {
+  display: block;
+}
+
+.tooltip:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-left: -10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px; /* Reduz ainda mais para telas pequenas*/
+  }
+
+  .tooltip {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+}
+
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+  svg {
+    width: 95vw; /* Em telas pequenas, o mapa ocupará 95% da largura */
+    max-height: 80vh; /* Limita a altura em telas pequenas */
+  }
+}
